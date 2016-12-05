@@ -1,0 +1,9 @@
+<H1>ALL AUCTIONS</H1>
+
+<% @auctions.each do |auction| %>
+
+  <% if can? :bid, auction %>
+  <%= link_to auction.title, auction_path(auction) %>
+  <br />
+  <% end %>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Create New Auction</h1>
+
+<%= @auction.errors.full_messages.join(', ') %>
+<%= form_for @auction do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :details %>
+    <%= f.text_area :details %>
+  </div>
+  <div>
+  <%= f.label :end_date %>
+  <%= f.text_field :end_date, id: "datepicker" %>
+  </div>
+  <div>
+    <%= f.label :reserve_price %>
+    <%= f.number_field :reserve_price %>
+  </div>
+  <%= f.submit %>
+<% end %>
+
+<script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+</script>

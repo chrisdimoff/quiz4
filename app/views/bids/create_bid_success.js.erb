@@ -1,0 +1,4 @@
+$('#bids').append('<%= j render 'bid', bid: @bid %>').children().last().hide().fadeIn(5000);
+
+<% @bid = Bid.new %>
+$('#bid-form').html('<%= j render 'form' %>');

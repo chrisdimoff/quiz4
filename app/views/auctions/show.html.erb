@@ -1,0 +1,34 @@
+<h1><%= @auction.title %></h1>
+
+<p> <%= @auction.details %> </p>
+
+
+<% if can? :publish, @auction %>
+
+  <% if @auction.draft? %>
+    <p>
+      Auction is in draft mode
+      <%= link_to 'Publish', auction_publish_path(@auction),
+                            method: :post,
+                            data: {confirm: 'Are you sure?'}%>
+    </p>
+  <% elsif @auction.published? %>
+
+    <%= link_to 'Un-Publish', auction_unpublish_path(@auction),
+                          method: :post,
+                          data: {confirm: 'Are you sure?'}%>
+
+    <p> Auction is published. </p>
+  <% end %>
+<% end %>
+
+<% if can? :bid, @auction %>
+  <div id = 'bids'>
+    <% @auction.bids.each do |bid| %>
+      <%= render '/bids/bid', { bid: bid } %>
+    <% end %>
+  </div>
+
+  <%= render '/bids/form' %>
+  </div>
+<% end %>

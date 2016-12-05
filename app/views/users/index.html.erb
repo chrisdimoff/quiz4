@@ -1,0 +1,7 @@
+<H1>ALL USERS</H1>
+
+<% @user.each do |u| %>
+  <% if u.bids.count > 0 %>
+  <%= link_to u.full_name, user_path(u) %> <br />
+<% end %>
+<% end %>

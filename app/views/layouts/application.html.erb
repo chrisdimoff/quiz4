@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Finalquiz</title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </head>
+
+  <body>
+    <%= link_to 'Home', root_path %> |
+    <%= link_to 'Show Auctions', auctions_path %> |
+    <% if session[:user_id].present? %>
+      Hello <%= current_user.first_name %> |
+      <%= link_to 'Sign Out', sessions_path, method: :delete %> |
+      <%= link_to 'New Auction', new_auction_path %> |
+      <%= link_to 'View Bids', user_path(current_user) %> |
+      <%= link_to 'View Users', users_path %> |
+    <% else %>
+      <%= link_to 'Sign Up', new_user_path %> |
+      <%= link_to 'Sign In', new_session_path %>
+    <% end %>
+    <hr />
+    <%= notice || alert %>
+  <%= yield %>
+  </body>
+</html>

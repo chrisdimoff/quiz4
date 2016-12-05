@@ -1,0 +1,5 @@
+<% @bids.each do |b| %>
+  Auction: <%= link_to b.auction.title, auction_path(b.auction) %> <br />
+  Bid Amount: <%= b.amount %>
+  <hr />
+<% end %>

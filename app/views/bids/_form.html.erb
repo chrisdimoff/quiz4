@@ -1,0 +1,6 @@
+<%= form_for [@auction, @bid ], remote: true do |c| %>
+  <div>
+    <%= c.number_field :amount %>
+  </div>
+  <%= c.submit %>
+<% end %>
